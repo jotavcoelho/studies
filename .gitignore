@@ -2,6 +2,8 @@
 
 # dependencies
 /reactjs/node_modules
+/node/node_modules
+/reactnative/node_modules
 /.pnp
 .pnp.js
 
