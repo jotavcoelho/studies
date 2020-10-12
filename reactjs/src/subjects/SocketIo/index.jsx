@@ -13,10 +13,11 @@ import {
 
 export default function SocketIo() {
   const [message, setMessage] = useState('');
-
-  const socket = io("http://localhost:3333");
+  const [socket, setSocket] = useState();
+  // const socket = io("http://localhost:3333");
   
   useEffect(() => {
+    setSocket(() => io("http://localhost:3333"));
   }, []);
 
   useEffect(() => {
