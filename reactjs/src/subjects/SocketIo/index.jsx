@@ -14,8 +14,9 @@ import {
 export default function SocketIo() {
   const [message, setMessage] = useState('');
 
+  const socket = io("http://localhost:3333");
+  
   useEffect(() => {
-    const socket = io("http://localhost:3333");
   }, []);
 
   useEffect(() => {
@@ -23,7 +24,8 @@ export default function SocketIo() {
   }, [message]);
 
   function sendMessage() {
-    // send message
+    setMessage("");
+    socket.emit("message", message);
   }
 
   return (
