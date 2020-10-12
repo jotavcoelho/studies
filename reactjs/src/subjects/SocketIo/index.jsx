@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 
 import io from 'socket.io-client';
 
-import { Container } from './styles';
+import { Container, ChatBox, InputArea } from './styles';
 
 export default function SocketIo() {
   useEffect(() => {
@@ -10,6 +10,13 @@ export default function SocketIo() {
   });
 
   return (
-    <h1>SocketIo</h1>
+    <Container>
+      <h1>Little real-time chat using Socket.io</h1>
+      <ChatBox></ChatBox>
+      <InputArea>
+        <input type="text"/>
+        <button type="button">Send</button>
+      </InputArea>
+    </Container>
   )
 }
