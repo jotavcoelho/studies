@@ -1,9 +1,9 @@
 import express from 'express';
 
-const router = express.Router();
+const routes = express.Router();
 
 routes.get('/', (req, res) => {
-  res.json({hello: 'world'});
+  res.json({ hello: 'world' });
 });
 
 export default routes;
