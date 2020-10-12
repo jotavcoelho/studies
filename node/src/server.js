@@ -14,6 +14,9 @@ app.use(routes);
 
 io.on('connection', socket => {
   console.log('a user connected');
+  socket.on('disconnect', () => {
+    console.log('a user disconnected');
+  });
 });
 
 server.listen(3333, () => { // search about the difference between using app.listen and server.listen, or just what this createServer does
