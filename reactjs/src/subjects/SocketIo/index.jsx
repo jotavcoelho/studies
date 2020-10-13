@@ -44,6 +44,9 @@ export default function SocketIo() {
             placeholder="Username"
             value={newUsername}
             onChange={e => setNewUsername(e.target.value)}
+            onKeyDown={e => {
+              (e.key === 'Enter') && setCurrentUsername(newUsername)
+            }}
           />
           <button onClick={() => setCurrentUsername(newUsername)}>Set Username</button>
           <h3>{currentUsername || "Your username will be here"}</h3>
