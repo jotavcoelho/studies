@@ -13,12 +13,12 @@ app.use(express.json());
 app.use(routes);
 
 io.on('connection', socket => {
-  console.log('a user connected');
+  console.log(`${socket.id} connected`);
   socket.on("message", message => {
     console.log(message);
   });
   socket.on('disconnect', () => {
-    console.log('a user disconnected');
+    console.log(`${socket.id} disconnected`);
   });
 });
 
