@@ -4,6 +4,8 @@ import io from 'socket.io-client';
 
 import { 
   Container, 
+  Sidebar,
+  UsernameContainer,
   ContactsContainer,
   ChatContainer,
   CurrentPerson,
@@ -12,8 +14,10 @@ import {
 } from './styles';
 
 export default function SocketIo() {
-  const [message, setMessage] = useState('');
+  const [newUsername, setNewUsername] = useState('');
+  const [currentUsername, setCurrentUsername] = useState('');
   const [socket, setSocket] = useState();
+  const [message, setMessage] = useState('');
   // const socket = io("http://localhost:3333");
   
   useEffect(() => {
@@ -22,7 +26,7 @@ export default function SocketIo() {
 
   useEffect(() => {
     
-  }, [message]);
+  }, []);
 
   function sendMessage() {
     setMessage("");
@@ -32,9 +36,22 @@ export default function SocketIo() {
   return (
     <Container>
       <h1>Little real-time chat using Socket.io</h1>
-      <ContactsContainer>
-        <h1>People</h1>
-      </ContactsContainer>
+      <Sidebar>
+        <UsernameContainer>
+          <input 
+            type="text" 
+            name="username"
+            placeholder="Username"
+            value={newUsername}
+            onChange={e => setNewUsername(e.target.value)}
+          />
+          <button onClick={() => setCurrentUsername(newUsername)}>Set Username</button>
+          <h3>{currentUsername || "Your username will be here"}</h3>
+        </UsernameContainer>
+        <ContactsContainer>
+          <h1>People</h1>
+        </ContactsContainer>
+      </Sidebar>
       <ChatContainer>
         <ChatBox>
           <CurrentPerson>
