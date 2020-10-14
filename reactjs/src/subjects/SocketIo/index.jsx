@@ -30,7 +30,7 @@ export default function SocketIo() {
 
   function sendMessage() {
     setMessage("");
-    socket.emit("message", { message, currentUsername });
+    socket.emit("message", { message, username: currentUsername });
   }
 
   return (
