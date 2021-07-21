@@ -1,7 +1,13 @@
 <template>
   <div class="container">
-    <Header title="Hello asdas"/>
-    <AddTask @add-task="addTask" />
+    <Header 
+      @toggle-add-task="toggleAddTask" 
+      title="Hello modafoca"
+      :showAddTask="showAddTask"
+    />
+    <div v-show="showAddTask" > <!-- v-if seems to work the same way -->
+      <AddTask @add-task="addTask" />
+    </div>
     <Tasks 
       @delete-task="deleteTask" 
       @toggle-reminder="toggleReminder"
@@ -24,7 +30,8 @@ export default {
   },
   data() {
     return {
-      tasks: []
+      tasks: [],
+      showAddTask: false,
     }
   },
   methods: {
@@ -40,6 +47,9 @@ export default {
     },
     addTask(task) {
       this.tasks = [...this.tasks, task];
+    },
+    toggleAddTask() {
+      this.showAddTask = !this.showAddTask;
     }
   },
   created() {
